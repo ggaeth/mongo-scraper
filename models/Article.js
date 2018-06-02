@@ -1,30 +1,30 @@
 // Require mongoose
 var mongoose = require("mongoose");
+var Note = require("./Note");
 // Create Schema class
 var Schema = mongoose.Schema;
 
 // Create article schema
 var ArticleSchema = new Schema({
-  // title is a required string
   title: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
-  // link is a required string
+  summary: {
+    type: String,
+    required: true
+  },
   link: {
     type: String,
     required: true
   },
-  date: String,
   saved: {
     type: Boolean,
     default: false
   },
-  // This only saves one note's ObjectId, ref refers to the Note model
-  note: [{
-    type: Schema.Types.ObjectId,
-    ref: "Note"
+  notes: [{
+     type: Schema.Types.ObjectId,
+     ref: "Note"
   }]
 });
 
